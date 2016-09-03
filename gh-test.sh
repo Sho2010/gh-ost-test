@@ -1,0 +1,21 @@
+gh-ost \
+--user="root" \
+--password="root" \
+--host="127.0.0.1" \
+--port=33307 \
+--test-on-replica \
+--database="test" \
+--table="my_table" \
+--verbose \
+--alter="engine=innodb" \
+--initially-drop-ghost-table \
+--initially-drop-old-table \
+--max-load=Threads_running=30 \
+--switch-to-rbr \
+--chunk-size=500 \
+--cut-over=default \
+--exact-rowcount \
+--concurrent-rowcount \
+--serve-socket-file=/tmp/gh-ost.test.sock \
+--panic-flag-file=/tmp/gh-ost.panic.flag \
+--execute
