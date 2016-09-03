@@ -1,10 +1,7 @@
 version: '2'
 services:
   master:
-    build:
-      context: .
-      args:
-        kind: 'master'
+    build: .
     image: ghost-mysql:master
     environment:
       - MYSQL_ROOT_PASSWORD=root
@@ -15,8 +12,7 @@ services:
   slave:
     build:
       context: .
-      args:
-        kind: 'slave'
+      dockerfile: Dockerfile-slave
     image: ghost-mysql:slave
     depends_on:
       - master
