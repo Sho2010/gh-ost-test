@@ -1,0 +1,33 @@
+version: '2'
+services:
+  master:
+    build:
+      context: .
+      args:
+        kind: 'master'
+    image: ghost-mysql:master
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+    expose:
+      - "3306"
+    ports:
+      - "33306:3306"
+  slave:
+    build:
+      context: .
+      args:
+        kind: 'slave'
+    image: ghost-mysql:slave
+    depends_on:
+      - master
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_MASTER_SERVER=master
+      - MYSQL_MASTER_ROOT_PASS=root
+      - MYSQL_MASTER_WAIT_TIME=60
+    links:
+      - master
+    expose:
+      - "3306"
+    ports:
+      - "33307:3306"
