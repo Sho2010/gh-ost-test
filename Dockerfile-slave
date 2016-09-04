@@ -9,5 +9,6 @@ RUN chown -R mysql:mysql /var/log/mysql
 ADD "slave.cnf" "/etc/mysql/conf.d"
 ADD "slave-start.sh" "/docker-entrypoint-initdb.d"
 
-EXPOSE 3306
+# refs slave.cnf port=33307
+EXPOSE 33307
 CMD ["mysqld"]

@@ -8,5 +8,6 @@ RUN chown -R mysql:mysql /var/log/mysql
 
 ADD "master.cnf" "/etc/mysql/conf.d"
 
-EXPOSE 3306
+#ref master.cnf port=
+EXPOSE 33306
 CMD ["mysqld"]

@@ -5,10 +5,8 @@ services:
     image: ghost-mysql:master
     environment:
       - MYSQL_ROOT_PASSWORD=root
-    expose:
-      - "3306"
     ports:
-      - "33306:3306"
+      - "33306:33306"
   slave:
     build:
       context: .
@@ -19,11 +17,12 @@ services:
     environment:
       - MYSQL_ROOT_PASSWORD=root
       - MYSQL_MASTER_SERVER=master
+      - MYSQL_REPLICATION_USER=root
+      - MYSQL_REPLICATION_PASS=root
       - MYSQL_MASTER_ROOT_PASS=root
-      - MYSQL_MASTER_WAIT_TIME=60
+      - MYSQL_MASTER_PORT=33306
+      - MYSQL_MASTER_WAIT_TIME=10
     links:
       - master
-    expose:
-      - "3306"
     ports:
-      - "33307:3306"
+      - "33307:33307"

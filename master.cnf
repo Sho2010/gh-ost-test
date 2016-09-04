@@ -1,3 +1,5 @@
 [mysqld]
 log-bin=/var/log/mysql/bin-log
 server-id=1
+port=33306
+character-set-server=utf8
