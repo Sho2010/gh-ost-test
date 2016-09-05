@@ -20,7 +20,7 @@ services:
       - MYSQL_ROOT_PASSWORD=root
       - MYSQL_MASTER_SERVER=master
       - MYSQL_MASTER_ROOT_PASS=root
-      - MYSQL_MASTER_WAIT_TIME=60
+      - MYSQL_MASTER_WAIT_TIME=5
     links:
       - master
     expose:
